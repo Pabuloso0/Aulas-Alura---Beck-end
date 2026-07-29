@@ -2,6 +2,8 @@ import subprocess
 import os
 from turtle import home
 
+
+# ------------------------------ [Funções de controle]-----
 def exibir_nome_do_progama():
     print("Sabor express\n")
 
@@ -16,21 +18,59 @@ def finalizar_programa():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("Programa finalizado.\n")
 
-def escolher_opcao():
-    print("Escolha uma opção do menu acima:\n")
-    opcao_escolhida = int(input("Escolha uma opção: "))
-    print(f"Você escolheu a opção {opcao_escolhida}\n")
+# ------------------------------ [Funções de validação]-----
+def opcao_invalida():
+    print("Opção inválida!\n")
+    input("Digite uma tecla para voltar ao menu principal: ")
+    main()
 
-    if opcao_escolhida == 1:
-        print("Cadastrar restaurante")
-    elif opcao_escolhida == 2:
-        print("Listar restaurantes")
-    elif opcao_escolhida == 3:
-        print("Ativar restaurante")
-    else:
-        finalizar_programa()
+# ------------------------------ [Funções de operações]-----
+
+restaurantes = ["Temperado", "Mama Julia"]
+
+def cadastrar_novo_restaurante():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("Cadastro de novos restaurantes\n")
+    nome_do_restaurante = input("Digite o nome de restaurante que deseja cadastrar: ")
+    restaurantes.append(nome_do_restaurante)
+    print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
+    input("\nDigite uma tecla para voltar ao menu principal: ")
+    main()
+
+def listar_restaurantes():
+    os.system("cls" if os.name == "nt" else "clear")
+    print("Listanto Restaurantes:\n")
+    for restaurante in restaurantes:
+        print(f".{restaurante}")
+    input("\nDigite uma tecla para voltar ao menu principal: ")
+
+
+def escolher_opcao():
+    try:
+        print("Escolha uma opção do menu acima:\n")
+        opcao_escolhida = int(input("Escolha uma opção: "))
+        print(f"Você escolheu a opção {opcao_escolhida}\n")
+
+        if opcao_escolhida == 1:
+            print("Cadastrar restaurante:\n")
+            cadastrar_novo_restaurante()
+        elif opcao_escolhida == 2:
+            print("Listar restaurantes:\n")
+            listar_restaurantes()
+    
+        elif opcao_escolhida == 3:
+            print("Ativar restaurante")
+        elif opcao_escolhida == 4:
+            finalizar_programa()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()
+
+    
 
 def main():
+    os.system('cls' if os.name == 'nt' else 'clear')
     exibir_nome_do_progama()
     exibir_menu()
     escolher_opcao()
