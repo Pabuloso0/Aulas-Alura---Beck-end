@@ -3,7 +3,7 @@ import os
 from turtle import home
 
 
-# ------------------------------ [Funções de controle]-----
+# ------------------------------ [Funções de exibição]-----
 def exibir_nome_do_progama():
     print("Sabor express\n")
 
@@ -15,13 +15,22 @@ def exibir_menu():
     print("4. Sair\n")
 
 def finalizar_programa():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("Programa finalizado.\n")
+    exibir_subtitulo("Programa finalizado")
+    
+
+def exibir_subtitulo(Texto):
+    os.system("cls" if os.name == "nt" else "clear")
+    print(Texto)
+    print()
+
 
 # ------------------------------ [Funções de validação]-----
 def opcao_invalida():
     print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
+    voltar_ao_menu_principal()
+
+def voltar_ao_menu_principal():
+    input("\nDigite uma tecla para voltar ao menu principal: ")
     main()
 
 # ------------------------------ [Funções de operações]-----
@@ -29,20 +38,21 @@ def opcao_invalida():
 restaurantes = ["Temperado", "Mama Julia"]
 
 def cadastrar_novo_restaurante():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("Cadastro de novos restaurantes\n")
+    exibir_subtitulo("Cadastro de novos restaurantes")
     nome_do_restaurante = input("Digite o nome de restaurante que deseja cadastrar: ")
     restaurantes.append(nome_do_restaurante)
     print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
-    input("\nDigite uma tecla para voltar ao menu principal: ")
-    main()
+
+    voltar_ao_menu_principal()
 
 def listar_restaurantes():
-    os.system("cls" if os.name == "nt" else "clear")
-    print("Listanto Restaurantes:\n")
+    exibir_subtitulo("Listanto Restaurantes:")
+
+
     for restaurante in restaurantes:
         print(f".{restaurante}")
-    input("\nDigite uma tecla para voltar ao menu principal: ")
+
+    voltar_ao_menu_principal()
 
 
 def escolher_opcao():
