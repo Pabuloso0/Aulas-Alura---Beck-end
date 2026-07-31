@@ -12,3 +12,13 @@ lista_de_nomes = ["Pablo", "Kethully", "Aline", "João Miguel"]
 lista_de_anos = [2000, 2026]
 
 #2. Crie uma lista e ultilize um loop for para percorrer todos os elementos da lista.
+lista_de_bandas = ["Beatles", "Twenty on pilots", "The Neighbourhood", "Artic Monkeys"]
+print("Essas são as minhas bandas favoritas: ")
+for bandas in lista_de_bandas:
+    print(f".{bandas}")
+
+#3 - Utilize um loop for para calcular a soma dos números ímpares de 1 a 10.
+soma_impares = 0
+for i in range(1, 11, 2):
+    soma_impares += i
+print(soma_impares)

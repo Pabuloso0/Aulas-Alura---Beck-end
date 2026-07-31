@@ -35,7 +35,8 @@ def voltar_ao_menu_principal():
 
 # ------------------------------ [Funções de operações]-----
 
-restaurantes = ["Temperado", "Mama Julia"]
+restaurantes = [{"nome": "Restaurante 1", "Categoria": "Comida Japonesa", "Ativo": True}, 
+                {"nome": "Restaurante 2", "Categoria": "Comida Brasileira", "Ativo": False}]
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo("Cadastro de novos restaurantes")
@@ -50,7 +51,10 @@ def listar_restaurantes():
 
 
     for restaurante in restaurantes:
-        print(f".{restaurante}")
+        nome_restaurante = restaurante["nome"]
+        categoria = restaurante["Categoria"]
+        ativo = restaurante["Ativo"]
+        print(f"- {nome_restaurante} / {categoria} / {ativo}")
 
     voltar_ao_menu_principal()
 
