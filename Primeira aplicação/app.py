@@ -35,13 +35,16 @@ def voltar_ao_menu_principal():
 
 # ------------------------------ [Funções de operações]-----
 
-restaurantes = [{"nome": "Restaurante 1", "Categoria": "Comida Japonesa", "Ativo": True}, 
-                {"nome": "Restaurante 2", "Categoria": "Comida Brasileira", "Ativo": False}]
+restaurantes = [{"nome": "Jr sushi", "Categoria": "Comida Japonesa", "Ativo": False}, 
+                {"nome": "Temperado", "Categoria": "Comida Brasileira", "Ativo": False}, 
+                {"nome": "Casa nossa", "Categoria": "Comida italiana", "Ativo": False}]
 
 def cadastrar_novo_restaurante():
     exibir_subtitulo("Cadastro de novos restaurantes")
     nome_do_restaurante = input("Digite o nome de restaurante que deseja cadastrar: ")
-    restaurantes.append(nome_do_restaurante)
+    categoria = input(f"Digite o nome da categoria do restaurante {nome_do_restaurante}: ")
+    dados_do_restaurante = {"nome": nome_do_restaurante, "Categoria": categoria, "ativo":False}
+    restaurantes.append(dados_do_restaurante)
     print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
 
     voltar_ao_menu_principal()
