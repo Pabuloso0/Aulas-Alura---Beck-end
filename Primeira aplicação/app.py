@@ -3,7 +3,7 @@ import os
 from turtle import home
 
 
-# ------------------------------ [Funções de exibição]-----
+# ------------------------------ [Funções de exibição]------------------------------------
 def exibir_nome_do_progama():
     print("Sabor express\n")
 
@@ -24,7 +24,7 @@ def exibir_subtitulo(Texto):
     print()
 
 
-# ------------------------------ [Funções de validação]-----
+# ------------------------------ [Funções de validação]-------------------------------------
 def opcao_invalida():
     print("Opção inválida!\n")
     voltar_ao_menu_principal()
@@ -33,7 +33,7 @@ def voltar_ao_menu_principal():
     input("\nDigite uma tecla para voltar ao menu principal: ")
     main()
 
-# ------------------------------ [Funções de operações]-----
+# ------------------------------ [Funções de operações]------------------------------------
 
 restaurantes = [{"nome": "Jr sushi", "Categoria": "Comida Japonesa", "Ativo": False}, 
                 {"nome": "Temperado", "Categoria": "Comida Brasileira", "Ativo": False}, 
@@ -43,7 +43,7 @@ def cadastrar_novo_restaurante():
     exibir_subtitulo("Cadastro de novos restaurantes")
     nome_do_restaurante = input("Digite o nome de restaurante que deseja cadastrar: ")
     categoria = input(f"Digite o nome da categoria do restaurante {nome_do_restaurante}: ")
-    dados_do_restaurante = {"nome": nome_do_restaurante, "Categoria": categoria, "ativo":False}
+    dados_do_restaurante = {"nome": nome_do_restaurante, "Categoria": categoria, "Ativo":False}
     restaurantes.append(dados_do_restaurante)
     print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
 
@@ -56,11 +56,29 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         nome_restaurante = restaurante["nome"]
         categoria = restaurante["Categoria"]
-        ativo = restaurante["Ativo"]
-        print(f"- {nome_restaurante} / {categoria} / {ativo}")
+        Ativo = restaurante["Ativo"]
+        print(f"- {nome_restaurante} / {categoria} / {Ativo}")
 
     voltar_ao_menu_principal()
 
+def alternar_estado_do_restaurante():
+    exibir_subtitulo("Alterando estado do restaurante")
+
+    nome_do_restaurante = input("Digite o nome do restaurante que deseja alterar sua ativação: ")
+    restaurante_encontrado = False
+
+    for restaurante in restaurantes:
+        if nome_do_restaurante == restaurante["nome"]:
+            restaurante_encontrado = True
+            restaurante["nome"] = not restaurante["Ativo"]
+            mensagem = f"O restaurante {nome_do_restaurante} foi ativado com sucesso"
+
+
+
+
+
+
+    voltar_ao_menu_principal()
 
 def escolher_opcao():
     try:
@@ -76,7 +94,7 @@ def escolher_opcao():
             listar_restaurantes()
     
         elif opcao_escolhida == 3:
-            print("Ativar restaurante")
+            alternar_estado_do_restaurante()
         elif opcao_escolhida == 4:
             finalizar_programa()
         else:
